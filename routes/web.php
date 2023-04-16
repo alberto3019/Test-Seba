@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/post',[PostController::class, 'store' ]);
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+Route::post('/post/{id}/comments', [CommentController::class, 'store'])->name('comment.store');
+
+
+
